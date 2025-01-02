@@ -6,6 +6,7 @@ LEXICON_DEFINITIONS = {
     "ASTERISK": r"\*",
     "SLASH": r"/",
     "UNDERSCORE": r"_",
+    "TILDE": r"~",
     
     # Text is handled separately by the lexer
     "TEXT": r"(.+)"
