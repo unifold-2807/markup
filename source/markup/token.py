@@ -1,4 +1,4 @@
-from lexicon_definitions import LEXICON_DEFINITIONS
+from source.markup.lexicon_definitions import LEXICON_DEFINITIONS
 
 # Tokens are produced by the lexer
 class Token:
@@ -18,3 +18,8 @@ class Token:
         else:
             representation = f"{self.kind} '{self.content}'"
         return representation
+    
+    def __eq__(self, other):
+        kindCheck = self.kind == other.kind
+        contentCheck = self.content == other.content
+        return kindCheck and contentCheck

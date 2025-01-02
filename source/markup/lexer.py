@@ -1,7 +1,7 @@
 import re
-from token import Token
-from lexicon_definitions import LEXICON_DEFINITIONS
-from state_definitions import STATE_DEFINITIONS, DEFAULT_STATE
+from source.markup.token import Token
+from source.markup.lexicon_definitions import LEXICON_DEFINITIONS
+from source.markup.state_definitions import STATE_DEFINITIONS, DEFAULT_STATE
 
 # The lexer takes in the source text and produces a list of tokens
 class Lexer:
