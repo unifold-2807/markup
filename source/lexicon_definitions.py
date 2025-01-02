@@ -1,6 +1,6 @@
 # Token kinds and their patterns that the lexer can use
 LEXICON_DEFINITIONS = {
-    "DOUBLE_NEWLINE": r"\n\n",
+    "MULTI_NEWLINE": r"\n{2,}",
     "BANG": r"! ?",
     "NEWLINE": r"\n",
     "ASTERISK": r"\*",
@@ -8,5 +8,5 @@ LEXICON_DEFINITIONS = {
     "UNDERSCORE": r"_",
     
     # Text is handled separately by the lexer
-    "TEXT": r"([\s\S]+)"
+    "TEXT": r"(.+)"
 }

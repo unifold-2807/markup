@@ -1,50 +1,74 @@
 import re
 from token import Token
 from lexicon_definitions import LEXICON_DEFINITIONS
+from state_definitions import STATE_DEFINITIONS, DEFAULT_STATE
 
 # The lexer takes in the source text and produces a list of tokens
 class Lexer:
     def __init__(self):
         self.cursor = 0
+        self.state = DEFAULT_STATE
 
     def lex(self, source):
         # Move the cursor through the source string
         # Match tokens along the way
         tokens = []
         while self.cursor < len(source):
-            is_matched = False
-            for kind, pattern in LEXICON_DEFINITIONS.items():
-                source_left = source[self.cursor:]
-                pattern_match = re.match(pattern, source_left)
-                if pattern_match is None:
-                    continue
-                
-                if kind == "TEXT":
-                    step = self.lex_text(source_left)
-                    content = source_left[:step]
-                else:
-                    step = pattern_match.span()[1]
-                    content = None
-                token = Token(kind, content)
-
-                is_matched = True
-                tokens.append(token)
-                self.cursor += step
-                break
-            if not is_matched:
-                raise ValueError(f"Couldnt Identify the token at {self.cursor}")
+            source_left = source[self.cursor:]
+            
+            state, step, token = self.advance(source_left).values()
+            self.state = state
+            self.cursor += step
+            tokens.append(token)
         return tokens
     
-    # Lexing text is a special case
-    # Returns the step that the lexer should take
-    def lex_text(self, source):
+    # Indentify the next token and state
+    def advance(self, source):
+        transitions = STATE_DEFINITIONS[self.state]
+        for state, lexicon in transitions.items():
+            identified = self.identify_token(lexicon, source)
+            if identified is None:
+                continue
+            
+            return {"state": state, "step": identified["step"], "token": identified["token"]}
+
+        # If no match was found
+        raise ValueError(f"Couldnt identify the token at index {self.cursor}")
+      
+    # Identify the next token using a given lexicon
+    def identify_token(self, lexicon, source):
+        # Iterate through token kinds to see which matches
+        for kind in lexicon:
+            pattern = LEXICON_DEFINITIONS[kind]
+            pattern_match = re.match(pattern, source)
+            if pattern_match is None:
+                continue
+            
+            if kind == "TEXT":
+                text_source = pattern_match.group(1)
+                step = self.indentify_text(lexicon, text_source)
+                content = source[:step]
+            else:
+                step = pattern_match.span()[1]
+                content = None
+            token = Token(kind, content)
+
+            return {"step": step, "token": token}
+        
+        # If no token was found
+        return None
+    
+    # Identifying text is a special case
+    # Returns the step that the cursor should take
+    def indentify_text(self, lexicon, source):
         # Find the first token in the source
         # Text will span from the beginning to that token
         first_token_index = len(source)
-        for kind, pattern in LEXICON_DEFINITIONS.items():
+        for kind in lexicon:
             if kind == "TEXT":
                 continue
             
+            pattern = LEXICON_DEFINITIONS[kind]
             pattern_match = re.search(pattern, source)
             if pattern_match is None:
                 continue
