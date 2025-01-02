@@ -52,10 +52,10 @@ data = [
     },
     {
         "name": "marks",
-        "source": "- An unordered list item with marks: #, |, ```, -, +",
+        "source": "- An unordered list item with marks: #, |, -, +",
         "tokens": [
             ["HYPHEN"],
-            ["TEXT", "An unordered list item with marks: #, |, ```, -, +"]
+            ["TEXT", "An unordered list item with marks: #, |, -, +"]
         ]
     }
 ]

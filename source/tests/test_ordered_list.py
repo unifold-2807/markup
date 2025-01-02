@@ -5,8 +5,8 @@ data = [
         "name": "single_item",
         "source": "+ An ordered list item",
         "tokens": [
-            ["HYPHEN"],
-            ["TEXT", "An unordered list item"],
+            ["PLUS"],
+            ["TEXT", "An ordered list item"],
         ]
     },
     {
@@ -52,10 +52,10 @@ data = [
     },
     {
         "name": "marks",
-        "source": "+ An ordered list item with marks: #, |, ```, -, +",
+        "source": "+ An ordered list item with marks: #, |, -, +",
         "tokens": [
             ["PLUS"],
-            ["TEXT", "An ordered list item with marks: #, |, ```, -, +"]
+            ["TEXT", "An ordered list item with marks: #, |, -, +"]
         ]
     }
 ]

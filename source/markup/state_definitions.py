@@ -3,7 +3,7 @@
 # Which token kinds need to be lexed in order to do so
 STATE_DEFINITIONS = {
     "BLOCK": {
-        "BLOCK": ["MULTI_NEWLINE", "BANG", "BAR", "NEWLINE"],
+        "BLOCK": ["MULTI_NEWLINE", "BANG", "BAR", "HYPHEN", "PLUS", "NEWLINE"],
         "CODE_BLOCK": ["TRIPLE_BACKTICK"],
         "INLINE_CODE": ["BACKTICK"],
         "INLINE": ["ASTERISK", "SLASH", "UNDERSCORE", "TILDE", "TEXT", "BACKTICK", "NEWLINE", "MULTI_NEWLINE"]
@@ -23,7 +23,7 @@ STATE_DEFINITIONS = {
         "INLINE_CODE": ["NEWLINE", "TEXT", "BACKTICK"]
     },
     "LINE_BREAK": {
-        "BLOCK": ["BAR"],
+        "BLOCK": ["BAR", "HYPHEN", "PLUS"],
         "INLINE": ["ASTERISK", "SLASH", "UNDERSCORE", "TILDE", "TEXT", "BACKTICK", "NEWLINE", "MULTI_NEWLINE"]
     }
 }

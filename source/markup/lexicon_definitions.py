@@ -4,6 +4,8 @@ LEXICON_DEFINITIONS = {
     "BANG": r"! ?",
     "BAR": r"\| ?",
     "TRIPLE_BACKTICK": r"```",
+    "HYPHEN": r"- ?",
+    "PLUS": r"\+ ?",
     "NEWLINE": r"\n",
     "ASTERISK": r"\*",
     "SLASH": r"/",
