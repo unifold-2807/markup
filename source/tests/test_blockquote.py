@@ -21,13 +21,18 @@ data = [
     {
         "name": "nested",
         "source": "| | A nested blockquote",
+        "tokens": [
+            ["BAR"],
+            ["BAR"],
+            ["TEXT", "A nested blockquote"]
+        ]
     },
     {
         "name": "line break",
         "source": "| A paragraph that has a \n| line break.",
         "tokens": [
             ["BAR"],
-            ["TEXT", "A paragraph with a "],
+            ["TEXT", "A paragraph that has a "],
             ["NEWLINE"],
             ["BAR"],
             ["TEXT", "line break."]
@@ -35,7 +40,7 @@ data = [
     },
     {
         "name": "inline_formattings",
-        "source": "| A paragraph that has inline formattings: *bold*, /italic/, _underline_, ~struck through~, `inline code`",
+        "source": "| A paragraph that has inline formattings: *bold*, /italicized/, _underlined_, ~struck through~, `inline code`.",
         "tokens": [
             ["BAR"],
             ["TEXT", "A paragraph that has inline formattings: "],
@@ -63,7 +68,7 @@ data = [
     },
     {
         "name": "double_paragraph",
-        "source": "| A paragraph.\n| \n| An another paragraph",
+        "source": "| A paragraph.\n| \n| An another paragraph.",
         "tokens": [
             ["BAR"],
             ["TEXT", "A paragraph."],
@@ -103,3 +108,9 @@ data = [
 
 class TestBlockquote(template.TestLexer): pass
 template.generate_tests(TestBlockquote, data)
+
+"""
+| A paragraph.
+| 
+| An another paragraph
+"""

@@ -2,6 +2,7 @@
 LEXICON_DEFINITIONS = {
     "MULTI_NEWLINE": r"\n{2,}",
     "BANG": r"! ?",
+    "BAR": r"\| ?",
     "NEWLINE": r"\n",
     "ASTERISK": r"\*",
     "SLASH": r"/",
