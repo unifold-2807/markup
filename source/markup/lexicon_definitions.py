@@ -7,6 +7,7 @@ LEXICON_DEFINITIONS = {
     "SLASH": r"/",
     "UNDERSCORE": r"_",
     "TILDE": r"~",
+    "BACKTICK": r"`",
     
     # Text is handled separately by the lexer
     "TEXT": r"(.+)"

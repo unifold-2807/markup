@@ -4,11 +4,17 @@
 STATE_DEFINITIONS = {
     "BLOCK": {
         "BLOCK": ["MULTI_NEWLINE", "BANG"],
-        "INLINE": ["ASTERISK", "SLASH", "UNDERSCORE", "TILDE", "TEXT"]
+        "INLINE_CODE": ["BACKTICK"],
+        "INLINE": ["ASTERISK", "SLASH", "UNDERSCORE", "TILDE", "TEXT", "BACKTICK"]
     },
     "INLINE": {
         "BLOCK": ["MULTI_NEWLINE"],
-        "INLINE": ["NEWLINE", "ASTERISK", "SLASH", "UNDERSCORE", "TILDE", "TEXT"]
+        "INLINE_CODE": ["BACKTICK"],
+        "INLINE": ["NEWLINE", "ASTERISK", "SLASH", "UNDERSCORE", "TILDE", "TEXT", "BACKTICK"]
+    },
+    "INLINE_CODE": {
+        "INLINE": ["BACKTICK"],
+        "INLINE_CODE": ["NEWLINE", "TEXT", "BACKTICK"]
     }
 }
 
