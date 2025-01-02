@@ -3,6 +3,7 @@ LEXICON_DEFINITIONS = {
     "MULTI_NEWLINE": r"\n{2,}",
     "BANG": r"! ?",
     "BAR": r"\| ?",
+    "TRIPLE_BACKTICK": r"```",
     "NEWLINE": r"\n",
     "ASTERISK": r"\*",
     "SLASH": r"/",
@@ -11,5 +12,5 @@ LEXICON_DEFINITIONS = {
     "BACKTICK": r"`",
     
     # Text is handled separately by the lexer
-    "TEXT": r"(.+)"
+    "TEXT": r"([\s\S]+)"
 }
