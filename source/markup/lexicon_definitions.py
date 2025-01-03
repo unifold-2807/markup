@@ -2,7 +2,6 @@
 LEXICON_DEFINITIONS = {
     "MULTI_NEWLINE": r"\n{2,}",
     "BANG": r"! ?",
-    "BAR": r"\| ?",
     "TRIPLE_BACKTICK": r"```",
     "HYPHEN": r"- ?",
     "PLUS": r"\+ ?",
